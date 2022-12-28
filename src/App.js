@@ -2,22 +2,22 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const google = () => {
+    window.open('http://localhost:4000/google', '_self');
+  };
+  const github = () => {
+    window.open('http://localhost:4000/github', '_self');
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="loginButton google" onClick={google}>
+        <img src="" alt="icon" className="icon" />
+        Google
+      </div>
+      <div className="loginButton google" onClick={github}>
+        <img src="" alt="icon" className="icon" />
+        Github
+      </div>
     </div>
   );
 }
