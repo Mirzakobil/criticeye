@@ -1,4 +1,6 @@
 import React from 'react';
+import { FormattedMessage, IntlProvider } from 'react-intl';
+
 const google = () => {
   window.open('http://localhost:4000/google', '_self');
 };
@@ -9,6 +11,8 @@ function login() {
   return (
     <>
       <div>login</div>
+      <FormattedMessage id="header" />
+
       <div className="loginButton google" onClick={google}>
         <img src="" alt="icon" className="icon" />
         Google
