@@ -1,6 +1,8 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import Navbar from '../header/navbar';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import GoogleIcon from '@mui/icons-material/Google';
+import { Button } from '@mui/material';
 const google = () => {
   window.open('http://localhost:4000/google', '_self');
 };
@@ -10,18 +12,15 @@ const github = () => {
 function login() {
   return (
     <>
-      <Navbar />
-      <div sx={{ color: 'primary.main' }}>login</div>
+      <div>login</div>
       <FormattedMessage id="header" />
 
-      <div className="loginButton google" onClick={google}>
-        <img src="" alt="icon" className="icon" />
-        Google
-      </div>
-      <div className="loginButton google" onClick={github}>
-        <img src="" alt="icon" className="icon" />
-        Github
-      </div>
+      <Button className="loginButton google" onClick={google}>
+        <GoogleIcon /> Google
+      </Button>
+      <Button className="loginButton google" onClick={github}>
+        <GitHubIcon /> Github
+      </Button>
     </>
   );
 }

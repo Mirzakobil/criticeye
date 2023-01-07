@@ -23,6 +23,32 @@ function App() {
   const [locale, setLocale] = useState(
     localStorage.getItem('locale') || locales.EN
   );
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const getUser = () => {
+      fetch('http://localhost:4000/login/success', {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Credentials': true,
+        },
+      })
+        .then((response) => {
+          if (response.status === 200) return response.json();
+          throw new Error('authentication has been failed!');
+        })
+        .then((resObject) => {
+          console.log(resObject);
+          setUser(resObject.user);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getUser();
+  }, []);
   const themeLight = createTheme({
     palette: {
       mode: 'light',
@@ -49,6 +75,8 @@ function App() {
             theme={themeColor === 'light' ? themeLight : themeDark}
           >
             <CssBaseline />
+            <Navbar user={user} />
+
             <Routes>
               <Route path="/" element={<Main />} />
               <Route path="/login" element={<Login />} />

@@ -17,8 +17,26 @@ function LocalePicker() {
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl>
-        <InputLabel id="demo-simple-select-label">Locale</InputLabel>
+        <InputLabel id="demo-simple-select-label" sx={{ color: 'white' }}>
+          Locale
+        </InputLabel>
         <Select
+          labelStyle={{ color: '#ff0000' }}
+          sx={{
+            color: 'white',
+            '.MuiOutlinedInput-notchedOutline': {
+              borderColor: 'rgba(228, 219, 233, 0.25)',
+            },
+            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+              borderColor: 'rgba(228, 219, 233, 0.25)',
+            },
+            '&:hover .MuiOutlinedInput-notchedOutline': {
+              borderColor: 'rgba(228, 219, 233, 0.25)',
+            },
+            '.MuiSvgIcon-root ': {
+              fill: 'white !important',
+            },
+          }}
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={locale}

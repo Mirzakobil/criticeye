@@ -17,36 +17,10 @@ function CategoryReviews() {
     }
     fetchData();
   }, [categoryId]);
-  //   useEffect(() => {
 
-  //     const getReviews = () => {
-  //       fetch(`http://localhost:4000/category/getall/review/${params.id}`, {
-  //         method: 'GET',
-  //         credentials: 'include',
-  //         headers: {
-  //           Accept: 'application/json',
-  //           'Content-Type': 'application/json',
-  //           'Access-Control-Allow-Credentials': true,
-  //         },
-  //       })
-  //         .then((response) => {
-  //           if (response.status === 200) return response.json();
-  //           throw new Error('authentication has been failed!');
-  //         })
-  //         .then((resObject) => {
-  //           console.log(resObject);
-  //           setReviews(resObject.user);
-  //         })
-  //         .catch((err) => {
-  //           console.log(err);
-  //         });
-  //     };
-  //     getReviews();
-  //   }, []);
   return (
     <>
       <div>CategoryReviews</div>
-      {/* {reviews[0].name} */}
       {reviews.map((review) => (
         <div key={review._id}>
           <Link
