@@ -121,7 +121,7 @@ const Navbar = ({ user }) => {
                   >
                     <Link
                       className="link"
-                      to={`/review/category/${category._id}`}
+                      to={`/category/reviews/${category._id}`}
                       style={{
                         textDecoration: 'none',
                         color: linkColor,
@@ -162,7 +162,7 @@ const Navbar = ({ user }) => {
                 >
                   <Link
                     className="link"
-                    to={`/review/category/${category._id}`}
+                    to={`/category/reviews/${category._id}`}
                     style={{
                       textDecoration: 'none',
                       color: 'white',

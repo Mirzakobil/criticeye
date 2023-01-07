@@ -1,8 +1,7 @@
 import './App.css';
+import Grid from '@mui/material/Grid';
 import Navbar from './header/navbar';
-import Main from './pages/main';
-import Login from './pages/login';
-import CategoryReviews from './pages/categoryReviews';
+import AppRoutes from './routes/AppRoutes';
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { createTheme, ThemeProvider, CssBaseline } from '@mui/material';
@@ -11,7 +10,7 @@ import { IntlProvider } from 'react-intl';
 import enMessages from './localization/en.json';
 import ruMessages from './localization/ru.json';
 import locales from './constants/locales';
-
+import Sidebar from './sidebar';
 const messages = {
   [locales.EN]: enMessages,
   [locales.RU]: ruMessages,
@@ -75,16 +74,17 @@ function App() {
             theme={themeColor === 'light' ? themeLight : themeDark}
           >
             <CssBaseline />
-            <Navbar user={user} />
-
-            <Routes>
-              <Route path="/" element={<Main />} />
-              <Route path="/login" element={<Login />} />
-              <Route
-                path="/review/category/:id"
-                element={<CategoryReviews />}
-              />
-            </Routes>
+            <Grid container>
+              <Grid item xs={12}>
+                <Navbar user={user} />
+              </Grid>
+              <Grid item xs={12} sm={4} md={3} lg={1.5}>
+                <Sidebar />
+              </Grid>
+              <Grid item xs={12} sm={8} md={9} lg={10}>
+                <AppRoutes />
+              </Grid>
+            </Grid>
           </ThemeProvider>
         </IntlProvider>
       </GlobalContext.Provider>

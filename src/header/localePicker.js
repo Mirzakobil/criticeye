@@ -44,7 +44,7 @@ function LocalePicker() {
           onChange={setCurrentLocale}
         >
           <MenuItem value={locales.EN}>English</MenuItem>
-          <MenuItem value={locales.RU}>Русский язык</MenuItem>
+          <MenuItem value={locales.RU}>Русский</MenuItem>
         </Select>
       </FormControl>
     </Box>
