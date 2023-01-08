@@ -40,14 +40,18 @@ function App() {
           throw new Error('authentication has been failed!');
         })
         .then((resObject) => {
-          console.log(resObject);
+          localStorage.setItem('user', JSON.stringify(resObject.user));
           setUser(resObject.user);
         })
         .catch((err) => {
           console.log(err);
         });
     };
-    getUser();
+    if (JSON.parse(localStorage.getItem('user'))) {
+      setUser(JSON.parse(localStorage.getItem('user')));
+    } else {
+      getUser();
+    }
   }, []);
   const themeLight = createTheme({
     palette: {

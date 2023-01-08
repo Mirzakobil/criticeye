@@ -40,8 +40,8 @@ export default function SignIn() {
     };
     axios(configuration)
       .then((result) => {
-        localStorage.setItem('role', result.data.role);
-        navigate('/');
+        localStorage.setItem('user', JSON.stringify(result.data));
+        window.location.href = '/';
       })
       .catch((error) => {
         setError(error.response.data.message);

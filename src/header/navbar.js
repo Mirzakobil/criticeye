@@ -39,6 +39,7 @@ const Navbar = ({ user }) => {
 
   const logout = () => {
     window.open('http://localhost:4000/logout', '_self');
+    localStorage.clear();
   };
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);

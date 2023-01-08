@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-
+import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
@@ -13,16 +13,38 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import GoogleIcon from '@mui/icons-material/Google';
 import Divider from '@mui/material/Divider';
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
+import Alert from '@mui/material/Alert';
 export default function SignUp() {
   const navigate = useNavigate();
+  const [error, setError] = useState('');
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const email = data.get('email');
+    const password = data.get('password');
+    const firstName = data.get('firstName');
+    const lastName = data.get('lastName');
+    console.log(email, password, firstName, lastName);
+    const configuration = {
+      method: 'post',
+      url: `http://localhost:4000/user/register`,
+      data: {
+        email,
+        password,
+        firstName,
+        lastName,
+      },
+    };
+    axios(configuration)
+      .then((result) => {
+        localStorage.setItem('user', JSON.stringify(result.data));
+        window.location.href = '/';
+      })
+      .catch((error) => {
+        setError(error.response.data.message);
+        console.log(error.response.data.message);
+      });
   };
   const google = () => {
     window.open('http://localhost:4000/google', '_self');
@@ -100,6 +122,7 @@ export default function SignUp() {
           >
             Sign Up
           </Button>
+          {error && <Alert severity="error">{{ error }}</Alert>}
           <Grid container justifyContent="flex-end">
             <Grid item>
               <Link
