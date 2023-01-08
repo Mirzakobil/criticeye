@@ -11,6 +11,7 @@ import enMessages from './localization/en.json';
 import ruMessages from './localization/ru.json';
 import locales from './constants/locales';
 import Sidebar from './sidebar';
+
 const messages = {
   [locales.EN]: enMessages,
   [locales.RU]: ruMessages,
@@ -78,7 +79,7 @@ function App() {
               <Grid item xs={12}>
                 <Navbar user={user} />
               </Grid>
-              <Grid item xs={12} sm={4} md={3} lg={1.5}>
+              <Grid item xs={12} sm={4} md={3} lg={2}>
                 <Sidebar />
               </Grid>
               <Grid item xs={12} sm={8} md={9} lg={10}>

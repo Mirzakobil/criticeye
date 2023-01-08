@@ -5,6 +5,7 @@ const GlobalContext = createContext({
   locale: locales.EN,
   theme: 'light',
   toggleColorMode: () => {},
+  user: {},
 });
 
 export default GlobalContext;
