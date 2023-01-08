@@ -11,10 +11,20 @@ import RateReviewIcon from '@mui/icons-material/RateReview';
 import ReviewsIcon from '@mui/icons-material/Reviews';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import TagIcon from '@mui/icons-material/Tag';
+import { useEffect, useState } from 'react';
 
 export default function Sidebar() {
   const navigate = useNavigate();
+  const [admin, setAdmin] = useState(false);
+  setTimeout(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+      return user.role === 'admin' ? setAdmin(true) : setAdmin(false);
+    }
+  }, 100);
+
   const color = localStorage.getItem('mode') === 'dark' ? 'white' : '#2196f3';
+
   return (
     <Box my={2} mr={4} px={2}>
       <Button
@@ -27,16 +37,18 @@ export default function Sidebar() {
         <HomeIcon />
         Home Page
       </Button>
-      <Button
-        sx={{ color: color }}
-        type="button"
-        onClick={() => {
-          navigate('/dashboard');
-        }}
-      >
-        <DashboardIcon />
-        Dashboard
-      </Button>
+      {admin && (
+        <Button
+          sx={{ color: color }}
+          type="button"
+          onClick={() => {
+            navigate('/dashboard');
+          }}
+        >
+          <DashboardIcon />
+          Dashboard
+        </Button>
+      )}
       <Button
         sx={{ color: color }}
         type="button"
@@ -57,16 +69,18 @@ export default function Sidebar() {
         <CategoryIcon />
         Categories
       </Button>
-      <Button
-        sx={{ color: color }}
-        type="button"
-        onClick={() => {
-          navigate('/comments');
-        }}
-      >
-        <ChatBubbleIcon />
-        Comments
-      </Button>
+      {admin && (
+        <Button
+          sx={{ color: color }}
+          type="button"
+          onClick={() => {
+            navigate('/comments');
+          }}
+        >
+          <ChatBubbleIcon />
+          Comments
+        </Button>
+      )}
       <Button
         sx={{ color: color }}
         type="button"
@@ -77,26 +91,30 @@ export default function Sidebar() {
         <RateReviewIcon />
         Reviews
       </Button>
-      <Button
-        sx={{ color: color }}
-        type="button"
-        onClick={() => {
-          navigate('/reviews/table');
-        }}
-      >
-        <ReviewsIcon />
-        Reviews T
-      </Button>
-      <Button
-        sx={{ color: color }}
-        type="button"
-        onClick={() => {
-          navigate('/users');
-        }}
-      >
-        <PeopleAltIcon />
-        Users
-      </Button>
+      {admin && (
+        <Button
+          sx={{ color: color }}
+          type="button"
+          onClick={() => {
+            navigate('/reviews/table');
+          }}
+        >
+          <ReviewsIcon />
+          Reviews T
+        </Button>
+      )}
+      {admin && (
+        <Button
+          sx={{ color: color }}
+          type="button"
+          onClick={() => {
+            navigate('/users');
+          }}
+        >
+          <PeopleAltIcon />
+          Users
+        </Button>
+      )}
       <Button
         sx={{ color: color }}
         type="button"
