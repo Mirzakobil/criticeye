@@ -37,21 +37,18 @@ export default function ReviewCard({
     }
   );
 
-  // .toLocaleDateString(
-  //   localStorage.getItem('locale') === 'ru' ? 'ru-RU' : 'en-US',
-  //   {
-  //     year: 'numeric',
-  //     month: 'long',
-  //     day: 'numeric',
-  //   }
-  // );
+  const shortBody = body.slice(0, 100);
+  const lan = localStorage.getItem('locale') === 'ru' ? 'автор' : 'by';
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card elevation={8} sx={{ maxWidth: 345 }}>
       <CardMedia component="img" height="194" image={img} alt="Paella dish" />
-      <CardHeader title={title} subheader={newDate + '  ' + author} />
+      <CardHeader
+        title={title}
+        subheader={newDate + '  ' + lan + ' ' + author}
+      />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          {body}
+          {shortBody}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import LocalePicker from './localePicker';
 import { useEffect, useState } from 'react';
@@ -25,6 +25,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import MenuIcon from '@mui/icons-material/Menu';
 
 const Navbar = ({ user }) => {
+  const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const linkColor = localStorage.getItem('mode') === 'dark' ? 'white' : 'black';
   useEffect(() => {
@@ -203,7 +204,21 @@ const Navbar = ({ user }) => {
                   onClose={handleCloseUserMenu}
                 >
                   <MenuItem onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">Profile</Typography>
+                    <Typography
+                      onClick={() => {
+                        navigate(`/userpage/${user._id}`);
+                      }}
+                      textAlign="center"
+                    >
+                      Profile
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      navigate('/review/create');
+                    }}
+                  >
+                    <Typography textAlign="center">Create Review</Typography>
                   </MenuItem>
                   <MenuItem onClick={handleCloseUserMenu}>
                     <Typography textAlign="center" onClick={logout}>

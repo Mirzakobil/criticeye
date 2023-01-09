@@ -19,11 +19,17 @@ function CategoryReviews() {
     }
     fetchData();
   }, [categoryId]);
-
+  const newReviews = [...reviews].sort(
+    (a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt)
+  );
   return (
     <>
-      <div>{reviews[0]?.category} Category Reviews</div>
-      {reviews.map((review) => (
+      {reviews.length > 1 ? (
+        <div>{reviews[0]?.category} Category Reviews</div>
+      ) : (
+        <div>No reviews for this category</div>
+      )}
+      {newReviews.map((review) => (
         <div key={review._id}>
           <Link
             className="link"

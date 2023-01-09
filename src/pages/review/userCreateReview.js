@@ -5,7 +5,7 @@ import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import Form from 'react-bootstrap/Form';
 import { v4 } from 'uuid';
 import { Button } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
@@ -43,6 +43,9 @@ const rejectStyle = {
 };
 
 function CreateReview() {
+  const params = useParams();
+  const userId = params.id;
+
   const navigate = useNavigate();
   const [resources, setResources] = useState(['']);
   const [resource, setResource] = useState('');
@@ -137,7 +140,7 @@ function CreateReview() {
       method: 'post',
       url: `http://localhost:4000/api/review/create`,
       data: {
-        authorId: user._id,
+        authorId: userId,
         resourceId: resourceId,
         reviewPhotoLink: downloadUrl,
         name: reviewTitle,
@@ -155,7 +158,7 @@ function CreateReview() {
         setGrade('');
       })
       .then(() => {
-        window.location.href = '/';
+        window.location.href = `/userpage/${userId}`;
       })
       .catch((error) => {
         setError(error.response.data.message);
