@@ -1,12 +1,14 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Route, Link, Routes, useParams } from 'react-router-dom';
+import Card from '../../components/card';
 function CategoryReviews() {
   const params = useParams();
 
   const linkColor = localStorage.getItem('mode') === 'dark' ? 'white' : 'black';
 
   const [reviews, setReviews] = useState([]);
+
   const categoryId = params.id;
   useEffect(() => {
     async function fetchData() {
@@ -20,7 +22,7 @@ function CategoryReviews() {
 
   return (
     <>
-      <div>CategoryReviews</div>
+      <div>{reviews[0]?.category} Category Reviews</div>
       {reviews.map((review) => (
         <div key={review._id}>
           <Link
@@ -31,7 +33,17 @@ function CategoryReviews() {
               color: linkColor,
             }}
           >
-            <span className="title">{review.name}</span>
+            <Card
+              img={review.reviewPhotoLink}
+              title={review.name}
+              body={review.reviewBody}
+              date={review.createdAt}
+              author={review.authorName}
+              grade={review.grade}
+              category={review.category}
+              likes={review.likes}
+              views={review.views}
+            />
           </Link>
         </div>
       ))}
