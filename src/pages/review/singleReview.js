@@ -16,6 +16,8 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Checkbox from '@mui/material/Checkbox';
+import Alert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
 
 const Img = styled('img')({
   margin: 'auto',
@@ -41,7 +43,7 @@ function SingleReview() {
   const [rating, setRating] = useState();
   const [ratedBefore, setRatedBefore] = useState(false);
 
-  const [error, setError] = useState('');
+  const [error, setError] = useState(false);
   const localUser = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
@@ -186,10 +188,6 @@ function SingleReview() {
   };
 
   const handleUserRating = () => {
-    console.log(rating);
-    console.log(localUser._id);
-    console.log(reviewId);
-    console.log(resourceId);
     const configuration = {
       method: 'post',
       url: `http://localhost:4000/api/resource/addUserRating`,
@@ -206,11 +204,15 @@ function SingleReview() {
         ratedBefore ? setRatedBefore(false) : setRatedBefore(true);
       })
       .catch((error) => {
-        setError(error.response.data.message);
-        console.log(error.response.data.message);
+        setError(true);
+        console.log('Error');
       });
   };
 
+  const handleErrorClose = () => {
+    setError(false);
+    setRatedBefore(true);
+  };
   return (
     <>
       <Container>
@@ -390,6 +392,16 @@ function SingleReview() {
                   </Button>
                 </>
               )}
+              <Snackbar
+                open={error}
+                autoHideDuration={3000}
+                onClose={handleErrorClose}
+                message="Note archived"
+              >
+                <Alert severity="error">
+                  You have already rated the resource!
+                </Alert>
+              </Snackbar>
             </Grid>
           </Grid>
         </Paper>
