@@ -217,7 +217,14 @@ function SingleReview() {
     <>
       <Container>
         {userId === localUser._id && (
-          <Button variant="outlined">Edit Review</Button>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              navigate(`/review/edit/${reviewId}`);
+            }}
+          >
+            Edit Review
+          </Button>
         )}
 
         <Paper
