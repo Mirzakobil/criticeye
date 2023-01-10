@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
-import { Route, Link, Routes, useParams } from 'react-router-dom';
+import { Route, Link, Routes, useParams, useNavigate } from 'react-router-dom';
+import Box from '@mui/material/Box';
 
 function Tags() {
+  const navigate = useNavigate();
   const linkColor = localStorage.getItem('mode') === 'dark' ? 'white' : 'black';
 
   const [tags, setTags] = useState([]);
+  const [admin, setAdmin] = useState(false);
   useEffect(() => {
     async function fetchData() {
       // You can await here
@@ -15,9 +18,17 @@ function Tags() {
     }
     fetchData();
   }, []);
+
+  setTimeout(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+      return user.role === 'admin' ? setAdmin(true) : setAdmin(false);
+    }
+  }, 100);
+
   return (
     <>
-      <div>All tags</div>
+      <h1>All tags</h1>
       {tags.map((tag) => (
         <div key={tag._id}>
           <Link
@@ -28,10 +39,18 @@ function Tags() {
               color: linkColor,
             }}
           >
-            <div>#{tag.name}</div>
+            <Button>#{tag.name}</Button>
           </Link>
         </div>
       ))}
+      <Box>
+        {admin && (
+          <Button variant="outlined" onClick={() => navigate('/tag/create')}>
+            {' '}
+            Create New
+          </Button>
+        )}
+      </Box>
     </>
   );
 }
