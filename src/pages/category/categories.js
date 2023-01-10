@@ -23,7 +23,7 @@ function Categories() {
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      await fetch(`http://localhost:4000/category/getall`)
+      await fetch(`https://criticeye-api.onrender.com/category/getall`)
         .then((response) => response.json())
         .then((json) => setCategories(json));
     }
@@ -70,7 +70,7 @@ function Categories() {
     console.log(ids);
     const configuration = {
       method: 'delete',
-      url: `http://localhost:4000/category/delete`,
+      url: `https://criticeye-api.onrender.com/category/delete`,
       data: { categoryIds: ids },
     };
     axios(configuration)

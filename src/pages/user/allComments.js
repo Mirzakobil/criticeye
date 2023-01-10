@@ -11,7 +11,7 @@ function AllComments() {
   const [pageSize, setPageSize] = useState(10);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/api/comment/getall/`)
+    fetch(`https://criticeye-api.onrender.com/api/comment/getall/`)
       .then((response) => response.json())
       .then((json) => setComments(json));
   }, [checked]);
@@ -27,7 +27,7 @@ function AllComments() {
     console.log(checked);
     const configuration = {
       method: 'delete',
-      url: `http://localhost:4000/comment/delete`,
+      url: `https://criticeye-api.onrender.com/comment/delete`,
       data: { commentIds: checked },
     };
     axios(configuration)

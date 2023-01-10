@@ -14,7 +14,7 @@ function UsersTable() {
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      await fetch(`http://localhost:4000/user/getall`)
+      await fetch(`https://criticeye-api.onrender.com/user/getall`)
         .then((response) => response.json())
         .then((json) => setUsers(json));
     }
@@ -36,7 +36,7 @@ function UsersTable() {
     console.log(checked);
     const configuration = {
       method: 'delete',
-      url: `http://localhost:4000/user/delete`,
+      url: `https://criticeye-api.onrender.com/user/delete`,
       data: { ids: checked },
     };
     axios(configuration)
@@ -53,7 +53,7 @@ function UsersTable() {
     console.log(checked);
     const configuration = {
       method: 'put',
-      url: `http://localhost:4000/user/block`,
+      url: `https://criticeye-api.onrender.com/user/block`,
       data: { ids: checked },
     };
     axios(configuration)
@@ -70,7 +70,7 @@ function UsersTable() {
     console.log(checked);
     const configuration = {
       method: 'put',
-      url: `http://localhost:4000/user/unblock`,
+      url: `https://criticeye-api.onrender.com/user/unblock`,
       data: { ids: checked },
     };
     axios(configuration)
@@ -87,7 +87,7 @@ function UsersTable() {
     console.log(checked);
     const configuration = {
       method: 'put',
-      url: `http://localhost:4000/user/makeAdmin`,
+      url: `https://criticeye-api.onrender.com/user/makeAdmin`,
       data: { ids: checked },
     };
     axios(configuration)
@@ -104,7 +104,7 @@ function UsersTable() {
     console.log(checked);
     const configuration = {
       method: 'put',
-      url: `http://localhost:4000/user/makeUser`,
+      url: `https://criticeye-api.onrender.com/user/makeUser`,
       data: { ids: checked },
     };
     axios(configuration)

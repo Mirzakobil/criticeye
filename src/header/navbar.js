@@ -31,7 +31,7 @@ const Navbar = ({ user }) => {
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      await fetch(`http://localhost:4000/category/getall`)
+      await fetch(`https://criticeye-api.onrender.com/category/getall`)
         .then((response) => response.json())
         .then((json) => setCategories(json));
     }
@@ -39,7 +39,7 @@ const Navbar = ({ user }) => {
   }, []);
 
   const logout = () => {
-    window.open('http://localhost:4000/logout', '_self');
+    window.open('https://criticeye-api.onrender.com/logout', '_self');
     localStorage.clear();
   };
   const [anchorElNav, setAnchorElNav] = React.useState(null);

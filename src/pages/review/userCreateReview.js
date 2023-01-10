@@ -64,7 +64,7 @@ function CreateReview() {
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      await fetch(`http://localhost:4000/resource/getall`)
+      await fetch(`https://criticeye-api.onrender.com/resource/getall`)
         .then((response) => response.json())
         .then((json) => setResources(json));
     }
@@ -81,7 +81,7 @@ function CreateReview() {
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      await fetch(`http://localhost:4000/tags/getall`)
+      await fetch(`https://criticeye-api.onrender.com/tags/getall`)
         .then((response) => response.json())
         .then((json) => setAllTags(json));
     }
@@ -138,7 +138,7 @@ function CreateReview() {
     setImgUpload(null);
     const configuration = {
       method: 'post',
-      url: `http://localhost:4000/api/review/create`,
+      url: `https://criticeye-api.onrender.com/api/review/create`,
       data: {
         authorId: userId,
         resourceId: resourceId,

@@ -19,7 +19,7 @@ function CreateTag() {
     const name = data.get('name');
     const configuration = {
       method: 'post',
-      url: `http://localhost:4000/api/tags/create`,
+      url: `https://criticeye-api.onrender.com/api/tags/create`,
       data: {
         name: name,
       },

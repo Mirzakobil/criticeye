@@ -49,7 +49,7 @@ function SingleReview() {
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      await fetch(`http://localhost:4000/review/${reviewId}`)
+      await fetch(`https://criticeye-api.onrender.com/review/${reviewId}`)
         .then((response) => response.json())
         .then((json) => {
           setReview(json);
@@ -71,7 +71,9 @@ function SingleReview() {
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      await fetch(`http://localhost:4000/api/comment/getall/review/${reviewId}`)
+      await fetch(
+        `https://criticeye-api.onrender.com/api/comment/getall/review/${reviewId}`
+      )
         .then((response) => response.json())
         .then((json) => {
           setComments(json);
@@ -83,7 +85,7 @@ function SingleReview() {
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      await fetch(`http://localhost:4000/reviewLikes/${reviewId}`)
+      await fetch(`https://criticeye-api.onrender.com/reviewLikes/${reviewId}`)
         .then((response) => response.json())
         .then((json) => {
           setLikesNumber(json);
@@ -94,7 +96,9 @@ function SingleReview() {
   // get resource rating data to check if user rated
   useEffect(() => {
     async function fetchData() {
-      await fetch(`http://localhost:4000/rating/getall/resource/${resourceId}`)
+      await fetch(
+        `https://criticeye-api.onrender.com/rating/getall/resource/${resourceId}`
+      )
         .then((response) => response.json())
         .then((json) => {
           const alreadyRated = json.find(
@@ -118,7 +122,9 @@ function SingleReview() {
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      await fetch(`http://localhost:4000/resource/getOne/${resourceId}`)
+      await fetch(
+        `https://criticeye-api.onrender.com/resource/getOne/${resourceId}`
+      )
         .then((response) => response.json())
         .then((json) => {
           setResource(json);
@@ -129,7 +135,9 @@ function SingleReview() {
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      await fetch(`http://localhost:4000/resource/getOne/${resourceId}`)
+      await fetch(
+        `https://criticeye-api.onrender.com/resource/getOne/${resourceId}`
+      )
         .then((response) => response.json())
         .then((json) => {
           setResource(json);
@@ -150,7 +158,7 @@ function SingleReview() {
   const handleCommentSubmit = () => {
     const configuration = {
       method: 'post',
-      url: `http://localhost:4000/api/review/comment`,
+      url: `https://criticeye-api.onrender.com/api/review/comment`,
       data: {
         userId: localUser._id,
         reviewId: reviewId,
@@ -170,7 +178,7 @@ function SingleReview() {
     console.log('liked');
     const configuration = {
       method: 'post',
-      url: `http://localhost:4000/api/review/like`,
+      url: `https://criticeye-api.onrender.com/api/review/like`,
       data: {
         userId: localUser._id,
         reviewId: reviewId,
@@ -190,7 +198,7 @@ function SingleReview() {
   const handleUserRating = () => {
     const configuration = {
       method: 'post',
-      url: `http://localhost:4000/api/resource/addUserRating`,
+      url: `https://criticeye-api.onrender.com/api/resource/addUserRating`,
       data: {
         userId: localUser._id,
         reviewId: reviewId,

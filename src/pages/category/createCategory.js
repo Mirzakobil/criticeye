@@ -19,7 +19,7 @@ function CreateCategory() {
     const name = data.get('name');
     const configuration = {
       method: 'post',
-      url: `http://localhost:4000/category/create`,
+      url: `https://criticeye-api.onrender.com/category/create`,
       data: {
         name: name,
       },

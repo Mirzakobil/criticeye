@@ -57,7 +57,7 @@ function EditReview() {
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      await fetch(`http://localhost:4000/review/${reviewId}`)
+      await fetch(`https://criticeye-api.onrender.com/review/${reviewId}`)
         .then((response) => response.json())
         .then((json) => {
           setReviewName(json.name);
@@ -108,7 +108,7 @@ function EditReview() {
     setImgUpload(null);
     const configuration = {
       method: 'post',
-      url: `http://localhost:4000/review/update`,
+      url: `https://criticeye-api.onrender.com/review/update`,
       data: {
         reviewId: reviewId,
         reviewName: reviewName,

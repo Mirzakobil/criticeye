@@ -42,10 +42,12 @@ function UserPage() {
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      await fetch(`http://localhost:4000/api/review/getall/user/${userId}`)
+      await fetch(
+        `https://criticeye-api.onrender.com/api/review/getall/user/${userId}`
+      )
         .then((response) => response.json())
         .then((json) => setReviews(json));
-      await fetch(`http://localhost:4000/user/getOne/${userId}`)
+      await fetch(`https://criticeye-api.onrender.com/user/getOne/${userId}`)
         .then((response) => response.json())
         .then((json) => setUser(json));
     }
@@ -55,7 +57,9 @@ function UserPage() {
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      await fetch(`http://localhost:4000/api/review/getall/user/${userId}`)
+      await fetch(
+        `https://criticeye-api.onrender.com/api/review/getall/user/${userId}`
+      )
         .then((response) => response.json())
         .then((json) => setReviews(json));
     }
@@ -65,7 +69,9 @@ function UserPage() {
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      await fetch(`http://localhost:4000/api/comment/getall/user/${userId}`)
+      await fetch(
+        `https://criticeye-api.onrender.com/api/comment/getall/user/${userId}`
+      )
         .then((response) => response.json())
         .then((json) => setComments(json));
     }
@@ -93,7 +99,7 @@ function UserPage() {
   const handleDeleteReview = (e) => {
     const configuration = {
       method: 'delete',
-      url: `http://localhost:4000/review/delete`,
+      url: `https://criticeye-api.onrender.com/review/delete`,
       data: { reviewIds: checkedReviews },
     };
     axios(configuration)
@@ -110,7 +116,7 @@ function UserPage() {
     console.log(checkedComments);
     const configuration = {
       method: 'delete',
-      url: `http://localhost:4000/comment/delete`,
+      url: `https://criticeye-api.onrender.com/comment/delete`,
       data: { commentIds: checkedComments },
     };
     axios(configuration)

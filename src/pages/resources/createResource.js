@@ -19,7 +19,7 @@ function CreateResource() {
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      await fetch(`http://localhost:4000/category/getall`)
+      await fetch(`https://criticeye-api.onrender.com/category/getall`)
         .then((response) => response.json())
         .then((json) => setCategories(json));
     }
@@ -40,7 +40,7 @@ function CreateResource() {
     const name = data.get('name');
     const configuration = {
       method: 'post',
-      url: `http://localhost:4000/api/resource/create`,
+      url: `https://criticeye-api.onrender.com/api/resource/create`,
       data: {
         name: name,
         categoryId: categoryId,

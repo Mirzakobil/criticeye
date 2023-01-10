@@ -12,7 +12,7 @@ function Tags() {
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      await fetch(`http://localhost:4000/tags/getall`)
+      await fetch(`https://criticeye-api.onrender.com/tags/getall`)
         .then((response) => response.json())
         .then((json) => setTags(json));
     }

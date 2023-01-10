@@ -28,7 +28,7 @@ export default function SignUp() {
     console.log(email, password, firstName, lastName);
     const configuration = {
       method: 'post',
-      url: `http://localhost:4000/user/register`,
+      url: `https://criticeye-api.onrender.com/user/register`,
       data: {
         email,
         password,
@@ -47,10 +47,10 @@ export default function SignUp() {
       });
   };
   const google = () => {
-    window.open('http://localhost:4000/google', '_self');
+    window.open('https://criticeye-api.onrender.com/google', '_self');
   };
   const github = () => {
-    window.open('http://localhost:4000/github', '_self');
+    window.open('https://criticeye-api.onrender.com/github', '_self');
   };
 
   return (

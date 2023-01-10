@@ -15,10 +15,14 @@ function CategoryReviews() {
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      await fetch(`http://localhost:4000/category/getall/review/${categoryId}`)
+      await fetch(
+        `https://criticeye-api.onrender.com/category/getall/review/${categoryId}`
+      )
         .then((response) => response.json())
         .then((json) => setReviews(json));
-      await fetch(`http://localhost:4000/category/getOne/${categoryId}`)
+      await fetch(
+        `https://criticeye-api.onrender.com/category/getOne/${categoryId}`
+      )
         .then((response) => response.json())
         .then((json) => setCategory(json.name));
     }

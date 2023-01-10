@@ -18,23 +18,23 @@ function Dashboard() {
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      await fetch(`http://localhost:4000/category/getall`)
+      await fetch(`https://criticeye-api.onrender.com/category/getall`)
         .then((response) => response.json())
         .then((json) => setCategories(json));
 
-      await fetch(`http://localhost:4000/resource/getall`)
+      await fetch(`https://criticeye-api.onrender.com/resource/getall`)
         .then((response) => response.json())
         .then((json) => setResources(json));
 
-      await fetch(`http://localhost:4000/api/review/getall/`)
+      await fetch(`https://criticeye-api.onrender.com/api/review/getall/`)
         .then((response) => response.json())
         .then((json) => setReviews(json));
 
-      await fetch(`http://localhost:4000/user/getall`)
+      await fetch(`https://criticeye-api.onrender.com/user/getall`)
         .then((response) => response.json())
         .then((json) => setUsers(json));
 
-      await fetch(`http://localhost:4000/api/comment/getall/`)
+      await fetch(`https://criticeye-api.onrender.com/api/comment/getall/`)
         .then((response) => response.json())
         .then((json) => setComments(json));
     }

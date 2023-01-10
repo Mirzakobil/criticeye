@@ -12,7 +12,7 @@ function AllReviews() {
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      await fetch(`http://localhost:4000/api/review/getall/`)
+      await fetch(`https://criticeye-api.onrender.com/api/review/getall/`)
         .then((response) => response.json())
         .then((json) => setReviews(json));
     }

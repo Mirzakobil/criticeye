@@ -18,10 +18,10 @@ import Alert from '@mui/material/Alert';
 export default function SignIn() {
   const navigate = useNavigate();
   const google = () => {
-    window.open('http://localhost:4000/google', '_self');
+    window.open('https://criticeye-api.onrender.com/google', '_self');
   };
   const github = () => {
-    window.open('http://localhost:4000/github', '_self');
+    window.open('https://criticeye-api.onrender.com/github', '_self');
   };
   const [error, setError] = useState('');
   const handleSubmit = (event) => {
@@ -32,7 +32,7 @@ export default function SignIn() {
     console.log(email, password);
     const configuration = {
       method: 'post',
-      url: `http://localhost:4000/api/login`,
+      url: `https://criticeye-api.onrender.com/api/login`,
       data: {
         email,
         password,

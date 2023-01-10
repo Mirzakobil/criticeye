@@ -28,7 +28,7 @@ function AllResources() {
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      await fetch(`http://localhost:4000/resource/getall`)
+      await fetch(`https://criticeye-api.onrender.com/resource/getall`)
         .then((response) => response.json())
         .then((json) => setResources(json));
     }
@@ -68,7 +68,7 @@ function AllResources() {
     console.log(ids);
     const configuration = {
       method: 'delete',
-      url: `http://localhost:4000/resource/delete`,
+      url: `https://criticeye-api.onrender.com/resource/delete`,
       data: { resourceIds: ids },
     };
     axios(configuration)

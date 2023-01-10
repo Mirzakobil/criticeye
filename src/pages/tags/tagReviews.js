@@ -15,10 +15,12 @@ function TagReviews() {
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      await fetch(`http://localhost:4000/api/review/getall/tag/${tagId}`)
+      await fetch(
+        `https://criticeye-api.onrender.com/api/review/getall/tag/${tagId}`
+      )
         .then((response) => response.json())
         .then((json) => setReviews(json));
-      await fetch(`http://localhost:4000/tag/${tagId}`)
+      await fetch(`https://criticeye-api.onrender.com/tag/${tagId}`)
         .then((response) => response.json())
         .then((json) => setTag(json.name));
     }

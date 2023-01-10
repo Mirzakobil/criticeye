@@ -11,7 +11,7 @@ function Main() {
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      await fetch(`http://localhost:4000/tags/getall`)
+      await fetch(`https://criticeye-api.onrender.com/tags/getall`)
         .then((response) => response.json())
         .then((json) => setTags(json));
     }
@@ -20,7 +20,7 @@ function Main() {
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      await fetch(`http://localhost:4000/api/review/getall/`)
+      await fetch(`https://criticeye-api.onrender.com/api/review/getall/`)
         .then((response) => response.json())
         .then((json) => setReviews(json));
     }

@@ -16,7 +16,7 @@ function ResourceReviews() {
     async function fetchData() {
       // You can await here
       await fetch(
-        `http://localhost:4000/api/review/getall/resource/${resourceId}`
+        `https://criticeye-api.onrender.com/api/review/getall/resource/${resourceId}`
       )
         .then((response) => response.json())
         .then((json) => setReviews(json));

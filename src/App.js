@@ -26,7 +26,7 @@ function App() {
   const [user, setUser] = useState(null);
   useEffect(() => {
     const getUser = () => {
-      fetch('http://localhost:4000/login/success', {
+      fetch('https://criticeye-api.onrender.com/login/success', {
         method: 'GET',
         credentials: 'include',
         headers: {
