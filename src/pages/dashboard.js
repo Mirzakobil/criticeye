@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import { useNavigate, Link } from 'react-router-dom';
 import Card from '../components/card';
+import Grid from '@mui/material/Grid';
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -45,77 +46,119 @@ function Dashboard() {
 
   return (
     <>
-      <div>Dashboard</div>
-      <div>Categories {categories.length}</div>
-      <div>Resources {resources.length}</div>
-      <div>Reviews {reviews.length}</div>
-      <div>Users {users.length}</div>
-      <div>Comments {comments.length}</div>
-      <div>
-        <ol>
-          Most Viewed Reviews
-          {mostViewedReviews
-            .filter((item, idx) => idx < 10)
-            .map((review) => (
-              <div key={review._id}>
-                <Link
-                  className="link"
-                  to={`/review/category/${review._id}`}
-                  style={{
-                    textDecoration: 'none',
-                    color: linkColor,
-                  }}
-                >
-                  <li>
-                    {review.name} {review.views}
-                  </li>
-                </Link>
-              </div>
-            ))}
-        </ol>
-        <ol>
-          Most Rated Resources
-          {mostRatedResources
-            .filter((item, idx) => idx < 10)
-            .map((resource) => (
-              <div key={resource._id}>
-                <Link
-                  className="link"
-                  to={`/resource/reviews/${resource._id}`}
-                  style={{
-                    textDecoration: 'none',
-                    color: linkColor,
-                  }}
-                >
-                  <li>
-                    {resource.name} {resource.rating}
-                  </li>
-                </Link>
-              </div>
-            ))}
-        </ol>
-        <ol>
-          Most Graded Resources
-          {mostGradedResources
-            .filter((item, idx) => idx < 10)
-            .map((resource) => (
-              <div key={resource._id}>
-                <Link
-                  className="link"
-                  to={`/resource/reviews/${resource._id}`}
-                  style={{
-                    textDecoration: 'none',
-                    color: linkColor,
-                  }}
-                >
-                  <li>
-                    {resource.name} {resource.grade}
-                  </li>
-                </Link>
-              </div>
-            ))}
-        </ol>
-      </div>
+      <h1>Dashboard</h1>
+      <Grid container spacing={1}>
+        <Grid item xs={6} sm={4} md={2}>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              navigate('/categories');
+            }}
+          >
+            Categories {categories.length}
+          </Button>
+        </Grid>
+        <Grid item xs={6} sm={4} md={2}>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              navigate('/resources');
+            }}
+          >
+            Resources {resources.length}
+          </Button>
+        </Grid>
+        <Grid item xs={6} sm={4} md={2}>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              navigate('/reviews/table');
+            }}
+          >
+            Reviews {reviews.length}
+          </Button>
+        </Grid>
+        <Grid item xs={6} sm={4} md={2}>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              navigate('/users');
+            }}
+          >
+            Users {users.length}
+          </Button>
+        </Grid>
+        <Grid item xs={6} sm={4} md={2}>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              navigate('/comments');
+            }}
+          >
+            Comments {comments.length}
+          </Button>
+        </Grid>
+      </Grid>
+
+      <h2>Most Viewed Reviews</h2>
+      <Grid container spacing={4}>
+        {mostViewedReviews
+          .filter((item, idx) => idx < 8)
+          .map((review) => (
+            <Grid item xs={12} sm={6} md={3} key={review._id}>
+              {' '}
+              <Card
+                img={review.reviewPhotoLink}
+                title={review.name}
+                body={review.reviewBody}
+                date={review.createdAt}
+                author={review.authorName}
+                grade={review.grade}
+                category={review.category}
+                likes={review.likes}
+                views={review.views}
+                reviewId={review._id}
+              />
+            </Grid>
+          ))}
+      </Grid>
+      <h2> Most Rated Resources</h2>
+      <Grid container spacing={1}>
+        {mostRatedResources
+          .filter((item, idx) => idx < 10)
+          .map((resource) => (
+            <Grid item xs={6} sm={4} md={2}>
+              <Button
+                variant="outlined"
+                key={resource._id}
+                onClick={() => {
+                  navigate(`/resource/reviews/${resource._id}`);
+                }}
+              >
+                {resource.name} rating: {resource.rating}
+              </Button>
+            </Grid>
+          ))}
+      </Grid>
+
+      <h2> Most Graded Resources</h2>
+      <Grid container spacing={1}>
+        {mostGradedResources
+          .filter((item, idx) => idx < 10)
+          .map((resource) => (
+            <Grid item xs={6} sm={4} md={3}>
+              <Button
+                variant="outlined"
+                key={resource._id}
+                onClick={() => {
+                  navigate(`/resource/reviews/${resource._id}`);
+                }}
+              >
+                {resource.name} grade: {resource.grade}
+              </Button>
+            </Grid>
+          ))}
+      </Grid>
     </>
   );
 }

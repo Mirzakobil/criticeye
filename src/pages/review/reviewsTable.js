@@ -50,7 +50,7 @@ function ReviewsTable() {
   };
   return (
     <>
-      <div>reviewsTable</div>
+      <h1>List of all reviews</h1>
       <Button variant="contained" color="error" onClick={handleDelete}>
         Delete
       </Button>

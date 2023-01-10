@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
 import { useNavigate, Link } from 'react-router-dom';
 import Card from '../components/card';
 function Main() {
@@ -33,26 +34,12 @@ function Main() {
 
   return (
     <>
-      <Button
-        onClick={() => {
-          navigate('/review/create');
-        }}
-      >
-        CreateReview
-      </Button>
-      <div>Newest Reviews</div>
-      {newReviews
-        .filter((item, idx) => idx < 5)
-        .map((review) => (
-          <div key={review._id}>
-            <Link
-              className="link"
-              to={`/review/${review._id}`}
-              style={{
-                textDecoration: 'none',
-                color: linkColor,
-              }}
-            >
+      <h1>Newest Reviews</h1>
+      <Grid container spacing={4}>
+        {newReviews
+          .filter((item, idx) => idx < 8)
+          .map((review) => (
+            <Grid item xs={12} sm={6} md={3} key={review._id}>
               <Card
                 img={review.reviewPhotoLink}
                 title={review.name}
@@ -63,23 +50,17 @@ function Main() {
                 category={review.category}
                 likes={review.likes}
                 views={review.views}
+                reviewId={review._id}
               />
-            </Link>
-          </div>
-        ))}
-      <div> Reviews with highest grade</div>
-      {gradedReviews
-        .filter((item, idx) => idx < 5)
-        .map((review) => (
-          <div key={review._id}>
-            <Link
-              className="link"
-              to={`/review/${review._id}`}
-              style={{
-                textDecoration: 'none',
-                color: linkColor,
-              }}
-            >
+            </Grid>
+          ))}
+      </Grid>
+      <h1> Reviews with highest grade</h1>
+      <Grid container spacing={4}>
+        {gradedReviews
+          .filter((item, idx) => idx < 8)
+          .map((review) => (
+            <Grid item xs={12} sm={6} md={3} key={review._id}>
               <Card
                 img={review.reviewPhotoLink}
                 title={review.name}
@@ -90,26 +71,25 @@ function Main() {
                 category={review.category}
                 likes={review.likes}
                 views={review.views}
+                reviewId={review._id}
               />
-            </Link>
-          </div>
-        ))}
-      <div>
+            </Grid>
+          ))}
+      </Grid>
+      <h1>Tags</h1>
+      <Grid container spacing={4}>
         {tags.map((tag) => (
-          <div key={tag._id}>
-            <Link
-              className="link"
-              to={`/tag/reviews/${tag._id}`}
-              style={{
-                textDecoration: 'none',
-                color: linkColor,
+          <Grid item xs={3} sm={3} md={1.5} key={tag._id}>
+            <Button
+              onClick={() => {
+                navigate(`/tag/reviews/${tag._id}`);
               }}
             >
               #{tag.name}
-            </Link>
-          </div>
+            </Button>
+          </Grid>
         ))}
-      </div>
+      </Grid>
     </>
   );
 }

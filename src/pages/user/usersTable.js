@@ -119,7 +119,7 @@ function UsersTable() {
 
   return (
     <>
-      <div>usersTable</div>
+      <h1>List of all users</h1>
       <Button
         variant="contained"
         sx={{ marginRight: '5px' }}

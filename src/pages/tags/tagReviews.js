@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Route, Link, Routes, useParams } from 'react-router-dom';
 import Card from '../../components/card';
+import Grid from '@mui/material/Grid';
 
 function TagReviews() {
   const params = useParams();
@@ -29,20 +30,14 @@ function TagReviews() {
   return (
     <>
       {newReviews.length > 0 ? (
-        <div>#{tag} Tag Reviews</div>
+        <h1>#{tag} Tag Reviews</h1>
       ) : (
-        <div>No reviews for this tag #{tag}</div>
+        <h1>No reviews for this tag #{tag}</h1>
       )}
-      {newReviews.map((review) => (
-        <div key={review._id}>
-          <Link
-            className="link"
-            to={`/review/category/${review._id}`}
-            style={{
-              textDecoration: 'none',
-              color: linkColor,
-            }}
-          >
+      <Grid container spacing={4}>
+        {' '}
+        {newReviews.map((review) => (
+          <Grid item xs={12} sm={6} md={3} key={review._id}>
             <Card
               img={review.reviewPhotoLink}
               title={review.name}
@@ -53,10 +48,11 @@ function TagReviews() {
               category={review.category}
               likes={review.likes}
               views={review.views}
+              reviewId={review._id}
             />
-          </Link>
-        </div>
-      ))}
+          </Grid>
+        ))}
+      </Grid>
     </>
   );
 }

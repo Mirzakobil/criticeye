@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import { useNavigate, Link } from 'react-router-dom';
 import Card from '../../components/card';
+import Grid from '@mui/material/Grid';
 
 function AllReviews() {
   const navigate = useNavigate();
@@ -22,17 +23,10 @@ function AllReviews() {
   );
   return (
     <>
-      <div>A</div>
-      {newReviews.map((review) => (
-        <div key={review._id}>
-          <Link
-            className="link"
-            to={`/review/${review._id}`}
-            style={{
-              textDecoration: 'none',
-              color: linkColor,
-            }}
-          >
+      <h1>All Reviews</h1>
+      <Grid container spacing={4}>
+        {newReviews.map((review) => (
+          <Grid item xs={12} sm={6} md={3} key={review._id}>
             <Card
               img={review.reviewPhotoLink}
               title={review.name}
@@ -43,10 +37,11 @@ function AllReviews() {
               category={review.category}
               likes={review.likes}
               views={review.views}
+              reviewId={review._id}
             />
-          </Link>
-        </div>
-      ))}
+          </Grid>
+        ))}
+      </Grid>
     </>
   );
 }

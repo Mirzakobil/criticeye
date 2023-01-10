@@ -48,7 +48,7 @@ function AllComments() {
 
   return (
     <>
-      <div>allComments</div>
+      <h1>List of all comments</h1>
       <Button variant="contained" color="error" onClick={handleDelete}>
         Delete
       </Button>
